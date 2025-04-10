@@ -74,7 +74,7 @@ class ProjectsController extends Controller
      */
     public function edit(Projects $project)
     {
-        dd($project);
+        // dd($project);
         // Decode the JSON string back to an array
         $project->technologies = json_decode($project->technologies, true);
         // dd($project->technologies);
@@ -86,7 +86,30 @@ class ProjectsController extends Controller
      */
     public function update(UpdateProjectsRequest $request, Projects $project)
     {
-        return view('projects.update', compact('project'));
+        $validatedData = $request->validate(
+            [
+                'title' => 'required|string|max:255',
+                'description' => 'required|string',
+                'category' => 'required|string',
+                'technologies' => 'required',
+                'demo_link' => 'nullable|string|url',
+                'github_link' => 'nullable|string|url',
+            ]
+        );
+        // Handle file upload if needed
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public');
+            $validatedData['image'] = $path;
+        }
+        // Convert technologies to JSON if it's an array
+        if (is_array($validatedData['technologies'])) {
+            $validatedData['technologies'] = json_encode($validatedData['technologies']);
+        }
+        // Update the project
+        $project->update($validatedData);
+        return redirect()->route('dashboard', $project)
+                        ->with('success', 'Project updated successfully.');
+
     }
 
     /**

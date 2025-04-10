@@ -9,7 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ isset($project) ? route('projects.update', $project) : route('projects.store') }}" method="POST" enctype="multipart/form-data">
+                        @if(isset($project))
+                            @method('PUT')
+                        @endif
                         @csrf
                         
                         <div class="mb-4">
