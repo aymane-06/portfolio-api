@@ -1,0 +1,25 @@
+/views
+    /auth
+        login.ejs
+        register.ejs
+    /dashboard
+        index.ejs
+    /projects
+        index.ejs
+        create.ejs
+        edit.ejs
+    /skills
+        index.ejs
+        create.ejs
+        edit.ejs
+    /layouts
+        main.ejs
+        dashboard.ejs
+    /partials
+        header.ejs
+        footer.ejs
+        navigation.ejs
+        sidebar.ejs
+    /errors
+        404.ejs
+        500.ejs

@@ -9,4 +9,17 @@ class Projects extends Model
 {
     /** @use HasFactory<\Database\Factories\ProjectsFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'image',
+        'category',
+        'technologies',
+        'demo_link',
+        'github_link'
+    ];
+    protected $casts = [
+        'technologies' => 'array',
+    ];
 }
