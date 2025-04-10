@@ -117,6 +117,8 @@ class ProjectsController extends Controller
      */
     public function destroy(Projects $project)
     {
-        return view('projects.destroy', compact('project'));
+        $project->delete();
+        return redirect()->route('dashboard')
+                        ->with('success', 'Project deleted successfully.');
     }
 }

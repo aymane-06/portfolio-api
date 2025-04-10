@@ -51,11 +51,11 @@
                             </label>
                             <select name="category" id="category" class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
                                 <option value="">Select a category</option>
-                                <option value="Web Development" {{ old('category',$project['category']) == 'Web Development' ? 'selected' : '' }}>Web Development</option>
-                                <option value="Mobile Development" {{ old('category',$project['category']) == 'Mobile Development' ? 'selected' : '' }}>Mobile Development</option>
-                                <option value="UI/UX Design" {{ old('category',$project['category']) == 'UI/UX Design' ? 'selected' : '' }}>UI/UX Design</option>
-                                <option value="Data Science" {{ old('category',$project['category']) == 'Data Science' ? 'selected' : '' }}>Data Science</option>
-                                <option value="Other" {{ old('category',$project['category']) == 'Other' ? 'selected' : '' }}>Other</option>
+                                <option value="Web Development" {{ old('category',$project['category']?? '') == 'Web Development' ? 'selected' : '' }}>Web Development</option>
+                                <option value="Mobile Development" {{ old('category',$project['category'] ?? '') == 'Mobile Development' ? 'selected' : '' }}>Mobile Development</option>
+                                <option value="UI/UX Design" {{ old('category',$project['category'] ?? '') == 'UI/UX Design' ? 'selected' : '' }}>UI/UX Design</option>
+                                <option value="Data Science" {{ old('category',$project['category'] ?? '') == 'Data Science' ? 'selected' : '' }}>Data Science</option>
+                                <option value="Other" {{ old('category',$project['category'] ?? '' ) == 'Other' ? 'selected' : '' }}>Other</option>
                             </select>
                             @error('category')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -99,7 +99,7 @@
                             <label for="demo_link" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                 Demo Link
                             </label>
-                            <input type="url" name="demo_link" id="demo_link" value="{{ old('demo_link',$project['demo_link']) }}" placeholder="https://example.com" class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <input type="url" name="demo_link" id="demo_link" value="{{ old('demo_link',$project['demo_link'] ?? '') }}" placeholder="https://example.com" class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             @error('demo_link')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -109,7 +109,7 @@
                             <label for="github_link" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                 GitHub Link
                             </label>
-                            <input type="url" name="github_link" id="github_link" value="{{ old('github_link',$project['github_link']) }}" placeholder="https://github.com/username/repo" class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <input type="url" name="github_link" id="github_link" value="{{ old('github_link',$project['github_link'] ?? '') }}" placeholder="https://github.com/username/repo" class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             @error('github_link')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
