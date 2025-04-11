@@ -121,4 +121,11 @@ class ProjectsController extends Controller
         return redirect()->route('dashboard')
                         ->with('success', 'Project deleted successfully.');
     }
+
+    public function projectsApi()
+    {
+        // Fetch all projects from the database
+        $projects = Projects::all();
+        return response()->json($projects, 200);
+    }
 }

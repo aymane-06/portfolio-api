@@ -12,8 +12,8 @@
                     <!-- Project Header with Actions -->
                     <div class="flex justify-between items-center mb-6">
                         <h3 class="text-2xl font-bold">{{ $project->title }}</h3>
-                        <div class="flex space-x-2"></div>
-                            <a href="{{ route('projects.edit', $project) }}" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
+                        <div class="flex space-x-2">
+                            <a href="{{ route('projects.edit', $project) }}" class="px-4 py-2 bg-black text-white rounded hover:bg-indigo-700 transition" style="background-color: cornflowerblue;">
                                 {{ __("Edit") }}
                             </a>
                             <form action="{{ route('projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this project?')">
@@ -29,7 +29,7 @@
                     <!-- Project Image -->
                     @if($project->image)
                     <div class="mb-6">
-                        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="rounded-lg max-h-96 object-contain">
+                        <img src="{{ asset('storage/' . $project->image) ?? $project->image }}" alt="{{ $project->title }}" class="rounded-lg max-h-96 object-contain">
                     </div>
                     @endif
                     
